@@ -19,7 +19,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @Author: LiuJieBang
+ * @Author: Williams
  * @Description: redis工具类
  * @Date: 2018/7/2 16:53
  **/

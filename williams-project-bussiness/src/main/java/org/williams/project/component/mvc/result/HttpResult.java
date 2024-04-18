@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @Author: LiuJieBang
+ * @Author: Williams
  * @Description: restFul自定义响应类
  * @Date: 2018/7/2 16:54
  **/

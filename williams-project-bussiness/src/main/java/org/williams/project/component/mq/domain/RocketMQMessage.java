@@ -3,7 +3,7 @@ package org.williams.project.component.mq.domain;
 import lombok.Data;
 
 /**
- * @author LiuJieBang
+ * @author Williams
  * @date 2024-03-08-18:46
  * @Description
  */
