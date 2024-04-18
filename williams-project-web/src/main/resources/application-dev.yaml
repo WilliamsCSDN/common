@@ -1,0 +1,76 @@
+server:
+  tomcat:
+    threads:
+      min-spare: 20
+      max: 400
+    max-connections: 10000
+    accept-count: 200
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ENC(pXZ/pkbbTErh79wti/c0DA==)
+    password: ENC(871E6uJHJ8KMFc5CMBAgjpNAkZvUc7Nb)
+    url: jdbc:mysql://gz-cdb-rwfnlzbf.sql.tencentcdb.com:57074/weicun_official_message?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+    hikari:
+      # 自动提交从池中返回的连接。默认：true
+      auto-commit: true
+      # 等待来自池的连接的最大毫秒数。默认：30000
+      connection-timeout: 30000
+      # 测试连接数据库
+      connection-test-query: SELECT 1
+      # 池中维护的最小空闲连接数。默认：10
+      minimum-idle: 10
+      # 连接允许在池中闲置的最长时间（以毫秒为单位）。默认：600000
+      idle-timeout: 600000
+      # 池中最大连接数，包括闲置和使用中的连接。默认：10
+      maximum-pool-size: 30
+      # 连接池的名称。默认：HikariPool-1
+      pool-name: HikariPoolCP
+      # 池中连接最长生命周期（以毫秒为单位）。默认：1800000
+      max-lifetime: 1800000
+      # 开启连接监测泄露
+      leak-detection-threshold: 5000
+  redis:
+    database: 0
+    host: sh-crs-fqmlmjrb.sql.tencentcdb.com
+    port: 22906
+    password: ENC(DO7rjZL/FwBOVZPUbzyFhjXRJUjbU0En)
+    timeout: 5000
+com:
+  rocketmq:
+    sendMessageWithVIPChannel: false
+rocketmq:
+  name-server: 192.168.110.119:9876
+  producer:
+    # 按服务名进行分组
+    group: PG_WEICUN_OFFICIAL_MESSAGE
+    #消息发送的超时时间 默认3000ms
+    send-message-timeout: 3000
+    #消息达到4096的时候，消息就会被压缩。默认 4096
+    compress-message-body-threshold: 4096
+    #最大的消息限制，默认为128K
+    max-message-size: 40960
+    #同步消息发送失败重试次数，默认2
+    retry-times-when-send-failed: 3
+    #在内部发送失败时是否重试其他代理，这个参数在有多个broker时才生效，默认false
+    retry-next-server: true
+    #异步消息发送失败重试的次数，默认2
+    retry-times-when-send-async-failed: 3
+  consumer:
+    pull-batch-size: 10
+async:
+  executor:
+    task:
+      corePoolSize: 4
+      maxPoolSize: 64
+      queueCapacity: 1000
+      keepAliveSeconds: 60
+      namePrefix: task-thread-
+    query:
+      corePoolSize: 8
+      maxPoolSize: 128
+      queueCapacity: 500
+      keepAliveSeconds: 60
+      namePrefix: query-thread-
+

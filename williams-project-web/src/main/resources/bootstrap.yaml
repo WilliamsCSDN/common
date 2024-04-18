@@ -1,0 +1,7 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /williams-project
+spring:
+  application:
+    name: williams-project
