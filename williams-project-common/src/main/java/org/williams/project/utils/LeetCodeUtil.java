@@ -3,17 +3,14 @@ package org.williams.project.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * z字形变换
+ */
 public class LeetCodeUtil {
     public static void main(String[] args) {
         System.out.println(convert1("PAYPALISHIRING", 3));
     }
 
-    /**
-     * z字形变换
-     * @param s
-     * @param numRows
-     * @return
-     */
     public static String convert1(String s, int numRows) {
         if (numRows == 1){
             return s;
