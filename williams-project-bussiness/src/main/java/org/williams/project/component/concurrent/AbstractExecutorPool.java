@@ -3,6 +3,11 @@ package org.williams.project.component.concurrent;
 import lombok.Data;
 
 
+/**
+ * @author Williams
+ * @date 2023-05-31-20:35
+ * @Description
+ */
 @Data
 public abstract class AbstractExecutorPool {
 

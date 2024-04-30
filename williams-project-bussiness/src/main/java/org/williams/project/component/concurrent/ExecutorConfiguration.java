@@ -9,6 +9,11 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.util.concurrent.ThreadPoolExecutor;
 
+/**
+ * @author Williams
+ * @date 2023-05-31-20:35
+ * @Description
+ */
 @Configuration
 @EnableAsync
 @RequiredArgsConstructor
