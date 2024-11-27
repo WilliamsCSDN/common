@@ -84,28 +84,28 @@
 				<artifactId>redisson</artifactId>
 				<version>${redisson-starter.version}</version>
 			</dependency>
-			<!--easy-es-->
-			<dependency>
-				<groupId>org.dromara.easy-es</groupId>
-				<artifactId>easy-es-boot-starter</artifactId>
-				<version>${easy-es.version}</version>
-			</dependency>
-			<!--elasticsearch-->
-			<dependency>
-				<groupId>org.elasticsearch.client</groupId>
-				<artifactId>elasticsearch-rest-high-level-client</artifactId>
-				<version>${elasticsearch.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.elasticsearch</groupId>
-				<artifactId>elasticsearch</artifactId>
-				<version>${elasticsearch.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.elasticsearch.client</groupId>
-				<artifactId>elasticsearch-rest-client</artifactId>
-				<version>${elasticsearch.version}</version>
-			</dependency>
+<!--			&lt;!&ndash;easy-es&ndash;&gt;-->
+<!--			<dependency>-->
+<!--				<groupId>org.dromara.easy-es</groupId>-->
+<!--				<artifactId>easy-es-boot-starter</artifactId>-->
+<!--				<version>${easy-es.version}</version>-->
+<!--			</dependency>-->
+<!--			&lt;!&ndash;elasticsearch&ndash;&gt;-->
+<!--			<dependency>-->
+<!--				<groupId>org.elasticsearch.client</groupId>-->
+<!--				<artifactId>elasticsearch-rest-high-level-client</artifactId>-->
+<!--				<version>${elasticsearch.version}</version>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>org.elasticsearch</groupId>-->
+<!--				<artifactId>elasticsearch</artifactId>-->
+<!--				<version>${elasticsearch.version}</version>-->
+<!--			</dependency>-->
+<!--			<dependency>-->
+<!--				<groupId>org.elasticsearch.client</groupId>-->
+<!--				<artifactId>elasticsearch-rest-client</artifactId>-->
+<!--				<version>${elasticsearch.version}</version>-->
+<!--			</dependency>-->
 			<dependency>
 				<groupId>com.github.ulisesbocchio</groupId>
 				<artifactId>jasypt-spring-boot-starter</artifactId>

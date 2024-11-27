@@ -8,10 +8,10 @@ server:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ENC(pXZ/pkbbTErh79wti/c0DA==)
-    password: ENC(871E6uJHJ8KMFc5CMBAgjpNAkZvUc7Nb)
-    url: jdbc:mysql://gz-cdb-rwfnlzbf.sql.tencentcdb.com:57074/weicun_official_message?serverTimezone=GMT%2B8&characterEncoding=utf8&useSSL=false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/fastbee?useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 123456
     hikari:
       # 自动提交从池中返回的连接。默认：true
       auto-commit: true
@@ -33,32 +33,31 @@ spring:
       leak-detection-threshold: 5000
   redis:
     database: 0
-    host: sh-crs-fqmlmjrb.sql.tencentcdb.com
-    port: 22906
-    password: ENC(DO7rjZL/FwBOVZPUbzyFhjXRJUjbU0En)
+    host: localhost
+    port: 6379
     timeout: 5000
 com:
   rocketmq:
     sendMessageWithVIPChannel: false
-rocketmq:
-  name-server: 192.168.110.119:9876
-  producer:
-    # 按服务名进行分组
-    group: PG_WEICUN_OFFICIAL_MESSAGE
-    #消息发送的超时时间 默认3000ms
-    send-message-timeout: 3000
-    #消息达到4096的时候，消息就会被压缩。默认 4096
-    compress-message-body-threshold: 4096
-    #最大的消息限制，默认为128K
-    max-message-size: 40960
-    #同步消息发送失败重试次数，默认2
-    retry-times-when-send-failed: 3
-    #在内部发送失败时是否重试其他代理，这个参数在有多个broker时才生效，默认false
-    retry-next-server: true
-    #异步消息发送失败重试的次数，默认2
-    retry-times-when-send-async-failed: 3
-  consumer:
-    pull-batch-size: 10
+#rocketmq:
+#  name-server: 192.168.110.119:9876
+#  producer:
+#    # 按服务名进行分组
+#    group: PG_WEICUN_OFFICIAL_MESSAGE
+#    #消息发送的超时时间 默认3000ms
+#    send-message-timeout: 3000
+#    #消息达到4096的时候，消息就会被压缩。默认 4096
+#    compress-message-body-threshold: 4096
+#    #最大的消息限制，默认为128K
+#    max-message-size: 40960
+#    #同步消息发送失败重试次数，默认2
+#    retry-times-when-send-failed: 3
+#    #在内部发送失败时是否重试其他代理，这个参数在有多个broker时才生效，默认false
+#    retry-next-server: true
+#    #异步消息发送失败重试的次数，默认2
+#    retry-times-when-send-async-failed: 3
+#  consumer:
+#    pull-batch-size: 10
 async:
   executor:
     task:
