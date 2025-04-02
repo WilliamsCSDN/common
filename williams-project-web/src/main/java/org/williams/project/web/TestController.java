@@ -20,13 +20,16 @@ public class TestController {
 
     @RequestMapping("/williams")
 //@RedisLock(keyword = "", expireTime = 10L)
-    public int test(){
-        List<byte[]> me = new ArrayList<>();
-        while (true){
-            byte[] a = new byte[1024*1024];
-            me.add(a);
-            System.out.println(me.size());
-        }
+    public String test(){
+//        List<byte[]> me = new ArrayList<>();
+//        while (true){
+//            byte[] a = new byte[1024*1024];
+//            me.add(a);
+//            System.out.println(me.size());
+//        }
+        System.out.println("haa");
+        return "1";
+
 //        try {
 //            Thread.sleep(100L);
 //        } catch (InterruptedException e) {

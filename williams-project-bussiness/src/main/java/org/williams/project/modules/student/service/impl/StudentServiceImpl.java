@@ -10,11 +10,15 @@ import org.williams.project.modules.student.service.StudentService;
 @Service
 @State(Scope.Benchmark)
 public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> implements StudentService {
+
+    private volatile Integer a = 0;
     @Override
     @Benchmark
     @BenchmarkMode(Mode.AverageTime)
     public int getStudent() {
 //        log.info("hah williams hah");
+
+        System.out.println(a++);
         return 0;
     }
 }

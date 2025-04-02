@@ -37,11 +37,11 @@ public class JmhTest {
 
         Options o = new OptionsBuilder()
                 .include(StudentService.class.getSimpleName())
-                .forks(1)
+                .forks(10)
                 .warmupIterations(1)
-                .warmupBatchSize(2)
-                .measurementIterations(3)
-                .measurementBatchSize(4)
+                .warmupBatchSize(1)
+                .measurementIterations(1)
+                .measurementBatchSize(1)
                 .build();
 
         new Runner(o).run();
