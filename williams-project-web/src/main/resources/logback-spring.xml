@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <!-- 日志存放路径 -->
+    <property name="LOG_PATH" value="${LOG_PATH:-logs}"/>
+    <!--spring.application.name表示工程名称-->
+    <springProperty scope="context" name="appName" source="spring.application.name" defaultValue="williams-project" />
+    <!--日志文件名称：写死名称也是可以得-->
+    <property name="LOG_FILE" value="${LOG_FILE:-${appName}}"/>
+    <!-- 彩色日志格式 -->
+    <property name="CONSOLE_LOG_PATTERN" value="[%tid] [UID:%X{uid}] ${CONSOLE_LOG_PATTERN:-%clr(${LOG_DATEFORMAT_PATTERN:-%d{yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) [%thread] %clr(%-40.40logger{39}-[%method,%line]){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <property name="FILE_LOG_PATTERN" value="[%tid] [UID:%X{uid}] ${FILE_LOG_PATTERN:-${LOG_DATEFORMAT_PATTERN:-%d{yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} [%thread] %-40.40logger{39}-[%method,%line] : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
+    <!-- skyworking tid -->
+    <conversionRule conversionWord = "tid" converterClass = "org.apache.skywalking.apm.toolkit.log.logback.v1.x.LogbackPatternConverter" />
+    <!-- 控制台输出 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <layout class="org.apache.skywalking.apm.toolkit.log.logback.v1.x.TraceIdPatternLogbackLayout">
+                <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            </layout>
+        </encoder>
+    </appender>
+
+    <!-- 系统日志 -->
+    <appender name="file_all" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_FILE}.log</file>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <fileNamePattern>${LOG_PATH}/${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--日志文件保留天数 -->
+            <maxHistory>7</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>1500MB</totalSizeCap>
+        </rollingPolicy>
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "TID":"%tid",
+                        "UID":"%X{uid}",
+                        "reqId": "%X{reqId}",
+                        "time": "%date{yyyy-MM-dd HH:mm:ss.SSS}",
+                        "level": "%level",
+                        "thread": "%thread",
+                        "logger": "%logger{39}",
+                        "method": "%method",
+                        "line": "%line",
+                        "message": "%message",
+                        "stack_trace":"%xEx"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 只会打印INFO不会有info日志-->
+            <level>INFO</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+    </appender>
+    <!-- 错误日志 -->
+    <appender name="file_error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${LOG_FILE}-error.log</file>
+        <!-- 循环政策：基于时间创建日志文件 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <fileNamePattern>${LOG_PATH}/${LOG_FILE}-error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--日志文件保留天数 -->
+            <maxHistory>7</maxHistory>
+            <maxFileSize>20MB</maxFileSize>
+            <totalSizeCap>200MB</totalSizeCap>
+        </rollingPolicy>
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            <pattern>${FILE_LOG_PATTERN}</pattern>-->
+<!--        </encoder>-->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <pattern>
+                    <pattern>
+                        {
+                        "TID":"%tid",
+                        "UID":"%X{uid}",
+                        "reqId": "%X{reqId}",
+                        "time": "%date{yyyy-MM-dd HH:mm:ss.SSS}",
+                        "level": "%level",
+                        "thread": "%thread",
+                        "logger": "%logger{39}",
+                        "method": "%method",
+                        "line": "%line",
+                        "message": "%message",
+                        "stack_trace":"%xEx"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!-- 过滤的级别 -->
+            <level>ERROR</level>
+            <!-- 匹配时的操作：接收（记录） -->
+            <onMatch>ACCEPT</onMatch>
+            <!-- 不匹配时的操作：拒绝（不记录） -->
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+    </root>
+    <!--系统操作日志-->
+    <root level="info">
+        <appender-ref ref="file_all"/>
+        <appender-ref ref="file_error"/>
+    </root>
+
+    <!--按环境去扫描 具体包下的SQL日志-->
+    <springProfile name="dev | test | pre | stress">
+        <logger name="java.sql.ResultSet" level="debug"/>
+        <logger name="java.sql.Statement" level="debug"/>
+        <logger name="java.sql.PreparedStatement" level="debug"/>
+        <logger name="java.sql.Connection" level="debug"/>
+        <logger name="com.tencent.weicun.official.search" level="debug"/>
+        <logger name="com.itjcloud.resource.api" level="debug"/>
+    </springProfile>
+</configuration>

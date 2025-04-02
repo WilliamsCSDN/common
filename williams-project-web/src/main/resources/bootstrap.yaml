@@ -5,3 +5,7 @@ server:
 spring:
   application:
     name: williams-project
+
+logging:
+  pattern:
+    level: "%-5p [${spring.application.name},%mdc{trace_id},%mdc{span_id},]"

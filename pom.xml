@@ -123,6 +123,17 @@
 				<artifactId>rocketmq-spring-boot-starter</artifactId>
 				<version>${rocketmq-spring-boot-starter}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-core</artifactId>
+				<version>1.36</version>
+			</dependency>
+			<dependency>
+				<groupId>org.openjdk.jmh</groupId>
+				<artifactId>jmh-generator-annprocess</artifactId>
+				<version>1.36</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -155,6 +166,18 @@
 			<artifactId>logstash-logback-encoder</artifactId>
 			<version>${logstash-logback-encoder.version}</version>
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.iboxpay.cashbox</groupId>-->
+<!--			<artifactId>cashbox-spring-autoconfigure</artifactId>-->
+<!--			<version>1.1.4-SNAPSHOT</version>-->
+<!--		</dependency>-->
+		<dependency>
+			<groupId>com.williams.maven</groupId>
+			<artifactId>cashbox-spring-autoconfigure</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+
+		</dependency>
+
 	</dependencies>
 
 </project>
