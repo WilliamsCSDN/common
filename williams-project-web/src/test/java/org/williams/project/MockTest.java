@@ -15,6 +15,8 @@ package org.williams.project;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -52,9 +54,11 @@ public class MockTest {
         System.out.println("after");
     }
 
-    @Test
-    public void test() throws Exception {
-        mockMvc.perform(get("/test/williams"))
+//    @Test
+    @ParameterizedTest
+    @ValueSource(strings = {"/test/williams", "/check"})
+    public void test(String url) throws Exception {
+        mockMvc.perform(get(url))
                 .andExpect(status().isOk())
                 .andExpect(content().string("{\"response\":{\"requestId\":\"\",\"body\":\"1\"}}"));
     }
