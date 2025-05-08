@@ -1,4 +1,4 @@
-package org.williams.project.utils;
+package org.williams.project.leetcode;
 
 /**
  * 字符串的最大公因子

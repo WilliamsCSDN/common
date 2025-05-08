@@ -26,6 +26,18 @@
             <artifactId>jasypt-spring-boot-starter</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-core</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
+            <version>1.8.0</version>
+        </dependency>
+
 
     </dependencies>
 

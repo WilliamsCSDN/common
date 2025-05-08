@@ -10,7 +10,7 @@
  * in accordance with the terms of the contract agreement
  * you entered into with iBOXCHAIN inc.
  */
-package org.williams.project.utils;
+package org.williams.project.leetcode;
 
 /**
  * 64. 最小路径和

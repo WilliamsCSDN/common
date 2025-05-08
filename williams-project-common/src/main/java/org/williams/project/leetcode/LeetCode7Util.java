@@ -1,4 +1,4 @@
-package org.williams.project.utils;
+package org.williams.project.leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;
