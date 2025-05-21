@@ -146,6 +146,28 @@
 				<artifactId>sentinel-spring-cloud-gateway-adapter</artifactId>
 				<version>1.8.0</version>
 			</dependency>
+
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-gateway</artifactId>
+				<version>2.1.2.RELEASE</version>
+			</dependency>
+
+			<!-- Spring State Machine -->
+			<dependency>
+				<groupId>org.springframework.statemachine</groupId>
+				<artifactId>spring-statemachine-starter</artifactId>
+				<version>2.2.1.RELEASE</version>
+			</dependency>
+
+			<!-- redis持久化状态机 -->
+			<dependency>
+				<groupId>org.springframework.statemachine</groupId>
+				<artifactId>spring-statemachine-redis</artifactId>
+				<version>1.2.9.RELEASE</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

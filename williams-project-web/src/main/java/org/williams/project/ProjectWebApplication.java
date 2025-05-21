@@ -13,12 +13,12 @@ public class ProjectWebApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProjectWebApplication.class, args);
-        List<byte[]> me = new ArrayList<>();
-        while (true){
-            byte[] a = new byte[1024*1024];
-            me.add(a);
-            System.out.println(me.size());
-        }
+//        List<byte[]> me = new ArrayList<>();
+//        while (true){
+//            byte[] a = new byte[1024*1024];
+//            me.add(a);
+//            System.out.println(me.size());
+//        }
     }
 
 }

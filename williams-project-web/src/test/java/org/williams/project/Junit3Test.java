@@ -12,7 +12,11 @@
  */
 package org.williams.project;
 
+import com.google.common.util.concurrent.RateLimiter;
 import junit.framework.TestCase;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.function.Function;
 
 /**
  * 类描述
@@ -22,9 +26,45 @@ import junit.framework.TestCase;
  */
 public class Junit3Test extends TestCase {
 
-    public void testHa() {
+    public void testHa() throws InterruptedException {
         System.out.println("sdaf");
+
+        RateLimiter r= RateLimiter.create(1);
+
+        CountDownLatch c = new CountDownLatch(3);
+
+        new Thread(() ->{
+            System.out.println(r.acquire());
+            c.countDown();
+
+        }).start();
+
+
+        new Thread(() ->{
+            System.out.println(r.acquire());
+            c.countDown();
+
+        }).start();
+
+        new Thread(() ->{
+            System.out.println(r.acquire());
+            c.countDown();
+
+        }).start();
+
+        c.await();
+    }
+
+    public void testF (){
+        function(a ->{
+            System.out.println(a.toString());
+            return a.toString();
+        });
+
     }
 
 
+    public void function(Function<Integer, String> a){
+        a.apply(1);
+    }
 }
