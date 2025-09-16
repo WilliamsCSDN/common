@@ -1,6 +1,5 @@
 package org.williams.project.web;
 
-import com.williams.plugins.annotation.RedisLock;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

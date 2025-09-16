@@ -34,7 +34,7 @@ public class MachineService {
     @Autowired
     private StateMachine<OrderStatus, OrderEvent> orderStateMachine;
 
-    @Resource(name = "orderRedisPersister")
+//    @Resource(name = "orderRedisPersister")
     private StateMachinePersister<OrderStatus, OrderEvent, String> persister;
 
 

@@ -27,7 +27,7 @@
 		<guava.version>31.1-jre</guava.version>
 		<mybatis-starter.version>2.2.2</mybatis-starter.version>
 		<mybatis-plus.version>3.5.3.2</mybatis-plus.version>
-		<redisson-starter.version>3.18.0</redisson-starter.version>
+<!--		<redisson-starter.version>3.18.0</redisson-starter.version>-->
 		<elasticsearch.version>7.14.0</elasticsearch.version>
 		<easy-es.version>2.0.0-beta2</easy-es.version>
 		<commons-io.version>2.11.0</commons-io.version>
@@ -79,11 +79,11 @@
 				<version>${mybatis-plus.version}</version>
 			</dependency>
 			<!--redisson-->
-			<dependency>
-				<groupId>org.redisson</groupId>
-				<artifactId>redisson</artifactId>
-				<version>${redisson-starter.version}</version>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>org.redisson</groupId>-->
+<!--				<artifactId>redisson</artifactId>-->
+<!--				<version>${redisson-starter.version}</version>-->
+<!--			</dependency>-->
 <!--			&lt;!&ndash;easy-es&ndash;&gt;-->
 <!--			<dependency>-->
 <!--				<groupId>org.dromara.easy-es</groupId>-->
@@ -162,11 +162,11 @@
 			</dependency>
 
 			<!-- redis持久化状态机 -->
-			<dependency>
-				<groupId>org.springframework.statemachine</groupId>
-				<artifactId>spring-statemachine-redis</artifactId>
-				<version>1.2.9.RELEASE</version>
-			</dependency>
+<!--			<dependency>-->
+<!--				<groupId>org.springframework.statemachine</groupId>-->
+<!--				<artifactId>spring-statemachine-redis</artifactId>-->
+<!--				<version>1.2.9.RELEASE</version>-->
+<!--			</dependency>-->
 
 		</dependencies>
 	</dependencyManagement>
@@ -205,11 +205,17 @@
 <!--			<artifactId>cashbox-spring-autoconfigure</artifactId>-->
 <!--			<version>1.1.4-SNAPSHOT</version>-->
 <!--		</dependency>-->
-		<dependency>
-			<groupId>com.williams.maven</groupId>
-			<artifactId>cashbox-spring-autoconfigure</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+<!--		<dependency>-->
+<!--			<groupId>com.williams.maven</groupId>-->
+<!--			<artifactId>cashbox-spring-autoconfigure</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>-->
 
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+			<version>2.9.3</version>
 		</dependency>
 
 	</dependencies>
